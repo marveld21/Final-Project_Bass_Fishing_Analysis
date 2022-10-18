@@ -10,6 +10,8 @@ from configparser import ConfigParser
 config_1 = ConfigParser()
 config_1.read('config.ini')
 
+
+#make sure correct working path is selected
 username = config_1['login']['un']
 password = config_1['login']['pw']
 
