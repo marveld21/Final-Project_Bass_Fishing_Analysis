@@ -52,41 +52,41 @@ Recorded_Time = []
 Tournament_Day = []
 
 
-#go to redcrest 2021 page look at ending of url for range
-Tournament_Days_URL=range(61, 62)
+#go to redcrest 2022 page look at ending of url for range
+Tournament_Days_URL=range(62, 63)
 T_Day = 0
 for Tournament_Days in Tournament_Days_URL:
     T_Day = T_Day + 1
     print('Tournament Day =',T_Day)
-    Tournament_URL = 'https://majorleaguefishing.com/results/?c=1000505&y=2022&e=1875391&r=61' #+str(Tournament_Days)
+    Tournament_URL = 'https://majorleaguefishing.com/results/?c=1000505&y=2022&e=1875391&r='+str(Tournament_Days)
     print(Tournament_URL)
     driver.get(Tournament_URL)
     
     #wait 2 sec
     sleep(2)
     
-    anglers = driver.find_element("tag name","tr")
+    #anglers = driver.find_element("tag name","tr")
   
     sleep(1)
     
     angler_count = len(driver.find_elements("xpath",'//*[@id="data-component"]/div[2]/table/tbody/tr'))
-    print(angler_count)
+    print('anglers on page= '+str(angler_count))
     
     if angler_count <= 20:
         
     
-        z=range(0,angler_count+1)
+        z=range(1,angler_count+1)
         
         for x in z:
-            x=1# this is for test
             redline = len(driver.find_elements("xpath",'//*[@id="data-component"]/div[2]/table/tbody/tr['+str(x)+']/td'))
             print(redline)
             if redline > 2:
                 
-                print(x-1)
+                print(x)
                 
                 anglerxpath = '//*[@id="data-component"]/div[2]/table/tbody/tr['+str(x)+']/td[3]/a'
                 A_N = driver.find_element("xpath",anglerxpath).text
+                print(A_N)
                 #clicks angler name to bring up fish caught
                 driver.find_element("xpath",anglerxpath).click()
                 sleep(2)    
@@ -95,6 +95,7 @@ for Tournament_Days in Tournament_Days_URL:
                 fish_data = 0
                 
                 for match in matches:
+                    print(match.text)
                     Angler_Name.append(A_N)
                     fish_data = fish_data + 1
                     Species.append(match.find_element("xpath",'/html/body/div[6]/div/div/div[2]/div[3]/table/tbody/tr['+str(fish_data)+']/td[1]').text)
@@ -112,17 +113,17 @@ for Tournament_Days in Tournament_Days_URL:
     
     elif angler_count > 20:
         
-        z=range(0,20)
+        z=range(1,18)
         
         for x in z:
             
-            redline = len(driver.find_elements("xpath",'//*[@id="data-component"]/div[2]/table/tbody/tr['+str(x)+']/td'))
-            if redline > 2:
+
                 
-                print(x-1)
-                
+                print(x)
+
                 anglerxpath = '//*[@id="data-component"]/div[2]/table/tbody/tr['+str(x)+']/td[3]/a'
                 A_N = driver.find_element("xpath",anglerxpath).text
+                print(A_N)
                 #clicks angler name to bring up fish caught
                 driver.find_element("xpath",anglerxpath).click()
                 sleep(2)    
@@ -130,6 +131,7 @@ for Tournament_Days in Tournament_Days_URL:
                 matches = driver.find_elements("xpath",'/html/body/div[6]/div/div/div[2]/div[3]/table/tbody/tr')
                 fish_data = 0
                 for match in matches:
+                    print(match.text)
                     Angler_Name.append(A_N)
                     fish_data = fish_data + 1
                     Species.append(match.find_element("xpath",'/html/body/div[6]/div/div/div[2]/div[3]/table/tbody/tr['+str(fish_data)+']/td[1]').text)
@@ -145,26 +147,30 @@ for Tournament_Days in Tournament_Days_URL:
         
         #move window to see
         driver.execute_script("window.scrollBy(0,1000)", "")
-        z=range(20,angler_count+1)
+        z=range(18,angler_count+1)
         
         for x in z:
             
             redline = len(driver.find_elements("xpath",'//*[@id="data-component"]/div[2]/table/tbody/tr['+str(x)+']/td'))
             if redline > 2:
             
-                print(x-1)
+                print(x)
                 
                 anglerxpath = '//*[@id="data-component"]/div[2]/table/tbody/tr['+str(x)+']/td[3]/a'
                 A_N = driver.find_element("xpath",anglerxpath).text
+                print(A_N)
                 driver.find_element("xpath",anglerxpath).click()
                 sleep(2)    
                 matches = driver.find_elements("xpath",'/html/body/div[6]/div/div/div[2]/div[3]/table/tbody/tr')
                 fish_data = 0
                 for match in matches:
+                    print(match.text)
                     Angler_Name.append(A_N)
                     fish_data = fish_data + 1
+                    #print(match.find_element("xpath",'/html/body/div[6]/div/div/div[2]/div[3]/table/tbody/tr['+str(fish_data)+']/td[1]').text)
                     Species.append(match.find_element("xpath",'/html/body/div[6]/div/div/div[2]/div[3]/table/tbody/tr['+str(fish_data)+']/td[1]').text)
-                    Weight.append(match.find_element_("xpath",'/html/body/div[6]/div/div/div[2]/div[3]/table/tbody/tr['+str(fish_data)+']/td[2]').text)
+                    #print(match.find_element("xpath",'/html/body/div[6]/div/div/div[2]/div[3]/table/tbody/tr['+str(fish_data)+']/td[2]').text)
+                    Weight.append(match.find_element("xpath",'/html/body/div[6]/div/div/div[2]/div[3]/table/tbody/tr['+str(fish_data)+']/td[2]').text)
                     Bait.append(match.find_element("xpath",'/html/body/div[6]/div/div/div[2]/div[3]/table/tbody/tr['+str(fish_data)+']/td[4]').text)
                     Area.append(match.find_element("xpath",'/html/body/div[6]/div/div/div[2]/div[3]/table/tbody/tr['+str(fish_data)+']/td[5]').text)
                     Cover.append(match.find_element("xpath",'/html/body/div[6]/div/div/div[2]/div[3]/table/tbody/tr['+str(fish_data)+']/td[6]').text)
@@ -181,5 +187,5 @@ driver.quit()
 df = pd.DataFrame({'Angler_Name':Angler_Name,'Species': Species,'Weight':Weight,'Bait':Bait,'Area':Area,'Cover':Cover,'Depth':Depth,'Recorded_Time':Recorded_Time,'Tournament_Day':Tournament_Day})
 df['Depth'] = df['Depth'] + 'ft'
 df['Weight'] = df['Weight'] + 'lbs-oz'
-df.to_csv('scrape_test_fishing_data.csv', index=False)
+df.to_csv('scrape_test_fishing_data_day_2.csv', index=False)
 print(df)
