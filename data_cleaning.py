@@ -1,4 +1,8 @@
 import pandas as pd
+import psycopg2
+from sqlalchemy import create_engine
+from config import db_password
+
 pd.options.display.max_columns = None
 fish_df = pd.read_csv("scrape_test_fishing_data.csv")
 fish_df2 = pd.read_csv("scrape_test_fishing_data_day_2.csv")
@@ -35,3 +39,17 @@ print('saved')
 combo_fish_df = pd.read_csv("combo_fish_data.csv")
 
 
+
+
+import pandas as pd
+import psycopg2
+from sqlalchemy import create_engine
+db_password = '902315779Dd!8'
+
+db_string = f"postgresql://postgres:{db_password}@127.0.0.1:5432/Fish_Catch_Data"
+print(db_string)
+#create engine instance
+engine = create_engine(db_string)
+
+df = pd.read_sql_query('select * from "Scraped_Fish_Data"',con=engine)
+df.tail()
