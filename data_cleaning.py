@@ -1,15 +1,34 @@
 import pandas as pd
 import psycopg2
 from sqlalchemy import create_engine
-from config import db_password
+from configparser import ConfigParser
 
-pd.options.display.max_columns = None
-fish_df = pd.read_csv("scrape_test_fishing_data.csv")
-fish_df2 = pd.read_csv("scrape_test_fishing_data_day_2.csv")
-#combine scrapes of days to a single df
-combo_fish_df = fish_df.append(fish_df2)
-print(combo_fish_df.head)
-#convert weights to lbs
+#import db_pw from config
+config_1 = ConfigParser()
+config_1.read('config.ini')
+
+db_password=config_1['db']['db_password']
+
+
+#connect to postgresql
+import pandas as pd
+import psycopg2
+from sqlalchemy import create_engine
+
+
+db_string = f"postgresql://postgres:{db_password}@127.0.0.1:5432/Fish_Catch_Data"
+print(db_string)
+#create engine instance
+engine = create_engine(db_string)
+
+df = pd.read_sql_query('select * from "Scraped_Fish_Data"',con=engine)
+df.tail()
+
+
+
+#clean data
+combo_fish_df = df
+
 combo_fish_df["Weight-lbs"] = round(combo_fish_df["Weight"].str[:1].astype(str).astype(int) + (combo_fish_df["Weight"].str[4:6].astype(str).astype(int)/16),2)
 combo_fish_df["Weight-lbs"]
 #make weight groups
@@ -37,19 +56,3 @@ combo_fish_df.to_csv('combo_fish_data.csv', index=False)
 print('saved')
 #bring back in fish data
 combo_fish_df = pd.read_csv("combo_fish_data.csv")
-
-
-
-
-import pandas as pd
-import psycopg2
-from sqlalchemy import create_engine
-db_password = '902315779Dd!8'
-
-db_string = f"postgresql://postgres:{db_password}@127.0.0.1:5432/Fish_Catch_Data"
-print(db_string)
-#create engine instance
-engine = create_engine(db_string)
-
-df = pd.read_sql_query('select * from "Scraped_Fish_Data"',con=engine)
-df.tail()
