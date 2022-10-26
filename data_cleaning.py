@@ -1,6 +1,7 @@
 import pandas as pd
 import psycopg2
 from sqlalchemy import create_engine
+import io
 from configparser import ConfigParser
 
 #import db_pw from config
@@ -50,9 +51,19 @@ combo_fish_df.loc[combo_fish_df['Recorded_Time_hour'] >= 8, 'Time_Group'] = "Ear
 combo_fish_df.loc[combo_fish_df['Recorded_Time_hour'] >= 10, 'Time_Group'] = "Late Morning"
 combo_fish_df.loc[combo_fish_df['Recorded_Time_hour'] >= 12, 'Time_Group'] = "Early Afternoon"
 combo_fish_df.loc[combo_fish_df['Recorded_Time_hour'] >= 14, 'Time_Group'] = "Late Afternoon"
-#save fish data to csv
-combo_fish_df
-combo_fish_df.to_csv('combo_fish_data.csv', index=False)
-print('saved')
-#bring back in fish data
-combo_fish_df = pd.read_csv("combo_fish_data.csv")
+
+
+#save cleaned fish data to sql table
+combo_fish_df.head(0).to_sql('Cleaned_Fish_Data', engine, if_exists='replace',index=False) #drops old table and creates new empty table
+
+conn = engine.raw_connection()
+cur = conn.cursor()
+output = io.StringIO()
+df.to_csv(output, sep='\t', header=False, index=False)
+output.seek(0)
+contents = output.getvalue()
+cur.copy_from(output, 'Cleaned_Fish_Data', null="") # null values become ''
+conn.commit()
+
+
+print("done")
