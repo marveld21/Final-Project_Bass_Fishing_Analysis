@@ -26,7 +26,7 @@ df.tail()
 
 
 
-#clean data
+#clean data/convert units for ML model
 combo_fish_df = df
 
 combo_fish_df["Weight-lbs"] = round(combo_fish_df["Weight"].str[:1].astype(str).astype(int) + (combo_fish_df["Weight"].str[4:6].astype(str).astype(int)/16),2)
