@@ -53,7 +53,7 @@ Tournament_Day = []
 
 
 #go to redcrest 2022 page look at ending of url for range
-Tournament_Days_URL=range(62, 63)
+Tournament_Days_URL=range(64, 65)
 T_Day = 0
 for Tournament_Days in Tournament_Days_URL:
     T_Day = T_Day + 1
@@ -187,5 +187,5 @@ driver.quit()
 df = pd.DataFrame({'Angler_Name':Angler_Name,'Species': Species,'Weight':Weight,'Bait':Bait,'Area':Area,'Cover':Cover,'Depth':Depth,'Recorded_Time':Recorded_Time,'Tournament_Day':Tournament_Day})
 df['Depth'] = df['Depth'] + 'ft'
 df['Weight'] = df['Weight'] + 'lbs-oz'
-df.to_csv('scrape_test_fishing_data_day_2.csv', index=False)
+df.to_csv('scrape_test_fishing_data_final_day.csv', index=False)
 print(df)
