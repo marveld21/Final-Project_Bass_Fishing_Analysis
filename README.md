@@ -20,7 +20,7 @@
 
 # Data Cleaning
 ## Some of the data is in formats that I would like to change. The fish weight is in a lbs-oz format and needs to be in a continuous format (lbs)
-## Also changed the time to a 24 hour format
+## Also changed the time to a 24 hour format and added a few other groupings I think I might need for the model.
 ## the data cleaning pulls from database and stores the cleaned data into a new table on the database.
 ![data cleaning picture](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/Data_Cleaning.PNG)
 
