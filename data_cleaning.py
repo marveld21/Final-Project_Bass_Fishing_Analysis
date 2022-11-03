@@ -51,9 +51,11 @@ combo_fish_df.loc[combo_fish_df['Recorded_Time_hour'] >= 8, 'Time_Group'] = "Ear
 combo_fish_df.loc[combo_fish_df['Recorded_Time_hour'] >= 10, 'Time_Group'] = "Late Morning"
 combo_fish_df.loc[combo_fish_df['Recorded_Time_hour'] >= 12, 'Time_Group'] = "Early Afternoon"
 combo_fish_df.loc[combo_fish_df['Recorded_Time_hour'] >= 14, 'Time_Group'] = "Late Afternoon"
+#add column for O/U 3lbs
+combo_fish_df.loc[combo_fish_df['Weight-lbs'] >= 3, 'Fish_Size'] = "Big Fish"
+combo_fish_df.loc[combo_fish_df['Weight-lbs'] < 3, 'Fish_Size'] = "Small Fish"
 
 
-#save cleaned fish data to sql table
 combo_fish_df.head(0).to_sql('Cleaned_Fish_Data', engine, if_exists='replace',index=False) #drops old table and creates new empty table
 
 conn = engine.raw_connection()
