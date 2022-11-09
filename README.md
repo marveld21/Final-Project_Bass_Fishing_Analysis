@@ -30,11 +30,13 @@
 ![pic of screen scrape data in pgadmin](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/Scraped_Data_Postgresql.PNG)
 ## And another for the cleaned data
 ![pic of cleaned data in pgadmin](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/Cleaned_Data_Postgresql.PNG)
+## Also added a table for weather data that is joined with the other data for future reference
+![pic of weather data join](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/join_fish_and_weather_data.PNG)
 
 # ML Model
-## Currently I have a keras model structure that pulls the cleaned data in from the database.
+## Currently I have a logistic regression model structure that pulls the cleaned data in from the database.
 ## I used binning to shrink the amount of data point within some of the more complex columns and then used the hot encoder to prepare the data for the model.
 ![pic of binning and dropping](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/binning_and_dropping.PNG)
-![pic of keras model](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/keras%20model.PNG)
+![pic of model](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/logistic_regression_model.PNG)
 
 
