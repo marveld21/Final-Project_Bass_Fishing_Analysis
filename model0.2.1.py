@@ -1,3 +1,6 @@
+# model 0.2.1 is attempting to improve accuracy above 0.581
+
+
 import pandas as pd
 import psycopg2
 from sqlalchemy import create_engine
@@ -41,37 +44,37 @@ fish_df.columns
 
 
 
-#simplify bait column ----binning
-bait_count = fish_df.Bait.value_counts()
-bait_count
+# #simplify bait column ----binning # removing for 0.2.1
+# bait_count = fish_df.Bait.value_counts()
+# bait_count
 
-bait_count.plot.density()
+# bait_count.plot.density()
 
-replace_bait = list(bait_count[bait_count<10].index)
+# replace_bait = list(bait_count[bait_count<10].index)
 
-# Replace in dataframe
-for app in replace_bait:
-    fish_df.Bait = fish_df.Bait.replace(app,"Other")
+# # Replace in dataframe
+# for app in replace_bait:
+#     fish_df.Bait = fish_df.Bait.replace(app,"Other")
     
-# Check to make sure binning was successful
-fish_df.Bait.value_counts()
+# # Check to make sure binning was successful
+# fish_df.Bait.value_counts()
 
-#simplify Cover column ----binning
-fish_df.nunique()
+# #simplify Cover column ----binning # removing for 0.2.1
+# fish_df.nunique()
 
-cover_count = fish_df.Cover.value_counts()
-cover_count
+# cover_count = fish_df.Cover.value_counts()
+# cover_count
 
-cover_count.plot.density()
+# cover_count.plot.density()
 
-replace_cover = list(cover_count[cover_count<7].index)
+# replace_cover = list(cover_count[cover_count<7].index)
 
-# Replace in dataframe
-for app in replace_cover:
-    fish_df.Cover = fish_df.Cover.replace(app,"Other")
+# # Replace in dataframe
+# for app in replace_cover:
+#     fish_df.Cover = fish_df.Cover.replace(app,"Other")
     
-# Check to make sure binning was successful
-fish_df.Cover.value_counts()
+# # Check to make sure binning was successful
+# fish_df.Cover.value_counts()
 
 
 fish_df.nunique()
