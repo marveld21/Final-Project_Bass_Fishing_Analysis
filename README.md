@@ -1,6 +1,6 @@
 # Final-Project_Bass_Fishing_Analysis
 
-# Segment 1 Overview
+# Overview
 ![mlf logo](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/mlflogo.PNG)
 ## The data set I have chosen is from Major League Fishing a professional fishing organization that has tournaments in a catch-weigh-release style. I'm an avid fisherman myself and I thought it would be a great data source for something I'm interested in. The data source is stored on the MLF website and will need to be screen scraped.
 ![fishing data example](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/fishing_data_example.PNG)
