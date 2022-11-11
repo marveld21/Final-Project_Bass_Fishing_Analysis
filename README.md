@@ -34,8 +34,8 @@
 
 # Dashboard
 ## I created a dashboard on Tableau Public that is interactive and can be used to look for trends or verify trends shown by the model.
-link to dashboard
-![pic of dashboard](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/dashboard.PNG)
+[https://public.tableau.com/views/FishingAnalysisWorkbook/TotalWeights?:language=en-US&:display_count=n&:origin=viz_share_link](Link to Table)
+![pic of dashboard](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/Dashboard.PNG)
 
 # ML Model
 ## Currently I have a logistic regression model structure that pulls the cleaned data in from the database.
