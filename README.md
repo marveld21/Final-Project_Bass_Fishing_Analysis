@@ -49,8 +49,5 @@
 ## Model 0.2
 ## Model 0.2 - added feature importance calculation to see what features are contributing more to the model
 ![pic of FI](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/Feature_Importance.PNG)
-
-## Model 0.2.1
 ## Model 0.2.1 - Attempt to improve on model accuracy by removing binning increased accuracy by a small margin.
-
-# Model 0.2.2 - Attempt to improve model accuracy by removing scaler was unsucessful.
+## Model 0.2.2 - Attempt to improve model accuracy by removing scaler was unsucessful.
