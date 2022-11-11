@@ -1,3 +1,6 @@
+# model 0.2.1 is attempting to improve accuracy above 0.581
+
+
 import pandas as pd
 import psycopg2
 from sqlalchemy import create_engine
@@ -41,37 +44,37 @@ fish_df.columns
 
 
 
-#simplify bait column ----binning
-bait_count = fish_df.Bait.value_counts()
-bait_count
+# #simplify bait column ----binning # removing for 0.2.1
+# bait_count = fish_df.Bait.value_counts()
+# bait_count
 
-bait_count.plot.density()
+# bait_count.plot.density()
 
-replace_bait = list(bait_count[bait_count<10].index)
+# replace_bait = list(bait_count[bait_count<10].index)
 
-# Replace in dataframe
-for app in replace_bait:
-    fish_df.Bait = fish_df.Bait.replace(app,"Other")
+# # Replace in dataframe
+# for app in replace_bait:
+#     fish_df.Bait = fish_df.Bait.replace(app,"Other")
     
-# Check to make sure binning was successful
-fish_df.Bait.value_counts()
+# # Check to make sure binning was successful
+# fish_df.Bait.value_counts()
 
-#simplify Cover column ----binning
-fish_df.nunique()
+# #simplify Cover column ----binning # removing for 0.2.1
+# fish_df.nunique()
 
-cover_count = fish_df.Cover.value_counts()
-cover_count
+# cover_count = fish_df.Cover.value_counts()
+# cover_count
 
-cover_count.plot.density()
+# cover_count.plot.density()
 
-replace_cover = list(cover_count[cover_count<7].index)
+# replace_cover = list(cover_count[cover_count<7].index)
 
-# Replace in dataframe
-for app in replace_cover:
-    fish_df.Cover = fish_df.Cover.replace(app,"Other")
+# # Replace in dataframe
+# for app in replace_cover:
+#     fish_df.Cover = fish_df.Cover.replace(app,"Other")
     
-# Check to make sure binning was successful
-fish_df.Cover.value_counts()
+# # Check to make sure binning was successful
+# fish_df.Cover.value_counts()
 
 
 fish_df.nunique()
@@ -164,10 +167,6 @@ results.head(20)
 from sklearn.metrics import accuracy_score
 print(accuracy_score(y_test, y_pred))
 
-
-
-
-
 #trying feature importance
 
 feature_importance = classifier.coef_
@@ -181,60 +180,6 @@ headers = list(encode_df)
 headers
 
 FI_df['Feature'] = headers
-FI_df.iloc[:,[1,0]]
-
+Feature_Importance_df = FI_df.iloc[:,[1,0]]
+Feature_Importance_df.sort_values(by=['FI'], ascending=False)
 #need to save as csv for dashboard
-
-
-
-
-
-# #keras deep learning
-# #Define the model - deep neural net, i.e., the number of input features and hidden nodes for each layer.
-
-# number_input_features = len(X_train_scaled[0])
-
-
-# nn = tf.keras.models.Sequential()
-
-# # First hidden layer
-# nn.add(tf.keras.layers.Dense(units=100, activation="relu", input_dim = number_input_features))
-
-# # Second hidden layer
-# nn.add(tf.keras.layers.Dense(units=60, activation="relu"))
-
-# # third hidden layer
-# nn.add(tf.keras.layers.Dense(units=30, activation="relu"))
-
-# # Output layer
-# nn.add(tf.keras.layers.Dense(units=1, activation="relu"))
-
-# # Check the structure of the model
-# nn.summary()
-
-
-# # Compile the model
-# nn.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
-
-
-# # Train the model
-# fit_model = nn.fit(X_train_scaled, y_train, epochs=100)
-
-
-# # Evaluate the model using the test data
-# model_loss, model_accuracy = nn.evaluate(X_test_scaled,y_test,verbose=2)
-# print(f"Loss: {model_loss}, Accuracy: {model_accuracy}")
-
-
-
-
-# #randomforest
-# # Create a random forest classifier.
-# rf_model = RandomForestClassifier(n_estimators=128, random_state=78)
-
-# # Fitting the model
-# rf_model = rf_model.fit(X_train_scaled, y_train)
-
-# # Evaluate the model
-# y_pred = rf_model.predict(X_test_scaled)
-# print(f" Random forest predictive accuracy: {accuracy_score(y_test,y_pred):.3f}")
