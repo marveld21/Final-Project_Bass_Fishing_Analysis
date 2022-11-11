@@ -9,7 +9,6 @@
 ## A useful question along the way to answer is do any of the features contribute more to the target(weight)
 
 # Github
-## I have this readme file!
 ## Communication is easy since its just myself working on the project
 ## I currently have 6 branches and have made several commits to each of them.
 ![github branches pic](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/Github_branches.PNG)
@@ -33,10 +32,25 @@
 ## Also added a table for weather data that is joined with the other data for future reference
 ![pic of weather data join](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/join_fish_and_weather_data.PNG)
 
+# Dashboard
+## I created a dashboard on Tableau Public that is interactive and can be used to look for trends or verify trends shown by the model.
+link to dashboard
+![pic of dashboard](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/dashboard.PNG)
+
 # ML Model
 ## Currently I have a logistic regression model structure that pulls the cleaned data in from the database.
+
+## Model 0.1
 ## I used binning to shrink the amount of data point within some of the more complex columns and then used the hot encoder to prepare the data for the model.
 ![pic of binning and dropping](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/binning_and_dropping.PNG)
 ![pic of model](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/logistic_regression_model.PNG)
 
+## Model Change log
+## Model 0.2
+## Model 0.2 - added feature importance calculation to see what features are contributing more to the model
+![pic of FI](https://github.com/marveld21/Final-Project_Bass_Fishing_Analysis/blob/main/Resources/Feature_Importance.PNG)
 
+## Model 0.2.1
+## Model 0.2.1 - Attempt to improve on model accuracy by removing binning increased accuracy by a small margin.
+
+# Model 0.2.2 - Attempt to improve model accuracy by removing scaler was unsucessful.
