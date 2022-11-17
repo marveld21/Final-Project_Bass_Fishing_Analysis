@@ -35,6 +35,10 @@ engine = create_engine(db_string)
 df = pd.read_sql_query('select * from "Cleaned_Fish_Data"',con=engine)
 df.tail()
 
+#to get mean & median
+df['Weight-lbs'].describe()
+df['Weight-lbs'].median()
+
 
 df.nunique()
 #drop not needed columns
@@ -182,4 +186,4 @@ headers
 FI_df['Feature'] = headers
 Feature_Importance_df = FI_df.iloc[:,[1,0]]
 Feature_Importance_df.sort_values(by=['FI'], ascending=False)
-#need to save as csv for dashboard
+Feature_Importance_df.sort_values(by=['FI'], ascending=False).to_csv('C:/Users/Derek/Documents/GitHub/Final-Project_Bass_Fishing_Analysis/Resources/Feature_Importance.csv')
